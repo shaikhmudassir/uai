@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML 5 Boilerplate</title>
+  </head>
+  <body>
+	<div id="reader"></div>
+	<script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+	<script>
+
+	// This method will trigger user permissions
+	Html5Qrcode.getCameras().then(devices => {
+		
+	  /**
+	   * devices would be an array of objects of type:
+	   * { id: "id", label: "label" }
+	   */
+	  if (devices && devices.length) {
+	    var cameraId = devices[0].id;
+		const html5QrCode = new Html5Qrcode("reader");
+		const qrCodeSuccessCallback = (decodedText, decodedResult) => {
+				
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+				  console.log(this.responseText);
+				}
+				};
+			xhttp.open("POST", "/scan", true);
+			xhttp.setRequestHeader("X-CSRFToken", '{{ csrf_token }}');
+			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			xhttp.send("fname=Henry&lname=Ford");	
+
+			
+
+
+		html5QrCode.stop().then((ignore) => {
+			  // QR Code scanning is stopped.
+			}).catch((err) => {
+			  // Stop failed, handle it.
+			});
+		};
+		const config = { fps: 10, qrbox: { width: 250, height: 250 } };
+		html5QrCode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback);
+	  }
+	}).catch(err => {
+	  // handle err
+	});
+	</script>
+  </body>
+</html>
