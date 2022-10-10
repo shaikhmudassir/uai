@@ -6,6 +6,6 @@ urlpatterns = [
 	path("", HomeView.as_view(), name="home"),
 	path("create", CreateView.as_view(), name="create"),
 	path("scan", ScanView.as_view(), name="scan"),
-	path("login", Login.as_view(), name="login"),
-	path("register", Register.as_view(), name="register"),
+	path("login", LoginView.as_view(), name="login"),
+	path("register", RegisterView.as_view(), name="register"),
 ]

@@ -9,52 +9,19 @@
   <body>
     <div class="d-flex justify-content-center align-items-center mt-5">
       <div class="card">
-        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+        <ul class="nav nav-pills mb-3">
             <li class="nav-item text-center">
-              <a class="nav-link active btl" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Login</a>
-            </li>
-            <li class="nav-item text-center">
-              <a class="nav-link btr" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Signup</a>
+              <span class="nav-link btr active">Signup</span>
             </li>
         </ul>
-        <div class="tab-content" id="pills-tabContent">
-          <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+        <div class="tab-content">
+          <div class="tab-pane show active">
             <form action="{% url 'attendance:login' %}" method="POST" class="form px-4 pt-5">
-              {% csrf_token %}
-              <input type="email" name="email" class="form-control" placeholder="Email">
-              <input type="password" name="password" class="form-control" placeholder="Password">
-              <button class="btn btn-dark btn-block">Login</button>
-            </form>
-          </div>
-          <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-            <form action="{% url 'attendance:register' %}" method="POST" class="form px-4">
-              {% csrf_token %}
-              <input type="text" name="first_name" class="form-control" placeholder="First Name">
-              <input type="text" name="last_name" class="form-control" placeholder="Last Name">
-              <input type="select" name="roll_no" min="5" max="5" class="form-control" placeholder="Roll Number">
-              <select name="year" class="form-select mb-3">
-                <option selected>Year</option>
-                <option value="1">First</option>
-                <option value="2">Second</option>
-                <option value="3">Third</option>
-                <option value="4">Fourth</option>
-              </select>
-              <select name="branch" class="form-select  mb-3">
-                <option selected>Branch</option>
-                <option value="CE">CE</option>
-                <option value="ME">ME</option>
-                <option value="CSE">CSE</option>
-                <option value="AIML">AIML</option>
-                <option value="ETC">ETC</option>
-              </select>
-              <select name="batch" class="form-select  mb-3">
-                <option selected>Batch</option>
-                <option value="CE">A</option>
-                <option value="ME">B</option>
-                <option value="CSE">C</option>
-              </select>
-              <button class="btn btn-dark btn-block">Register</button>
-            </form>
+            {% csrf_token %}
+            <input type="email" name="email" class="form-control" placeholder="Email">
+            <input type="password" name="password" class="form-control" placeholder="Password">
+            <button class="btn btn-dark btn-block">Login</button>
+          </form>
           </div>
         </div>
       </div>
