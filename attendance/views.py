@@ -13,12 +13,14 @@ class HomeView(View):
     html = '''<a href="create"><button>Create</button></a>
             <a href="scan"><button>Scan</button></a>
             <a href="login"><button>login</button></a>
+            <a href="register"><button>register</button></a>
+            <a href="display"><button>Display</button></a>
+            <a href="atten"><button>atten</button></a
             '''
     return HttpResponse(html)
 
-
 class CreateView(View):
-
+  
   def get(self, request):
     s = "{'key':'value'}"
     url = pyqrcode.create(s)
@@ -26,7 +28,21 @@ class CreateView(View):
     url.svg(buffer, scale=10)
     return HttpResponse(buffer.getvalue())
 
+class DisplayQRView(View):
+  
+  def get(self, request):
+    # if 'user_id' in request.session:
+    #     return HttpResponseRedirect('')
 
+    return render(request, 'attendance/display_qr.html', {})
+
+class AttenView(View):
+  
+  def get(self, request):
+    # if 'user_id' in request.session:
+    #     return HttpResponseRedirect('')
+
+    return render(request, 'attendance/attendance.html', {})
 class ScanView(TemplateView):
 
   def post(self, request, *args, **kwargs):
@@ -57,6 +73,12 @@ class LoginView(View):
 
 class RegisterView(View):
 
+  def get(self, request):
+    # if 'user_id' in request.session:
+    #     return HttpResponseRedirect('')
+  
+    return render(request, 'attendance/register.html', {})
+  
   def post(self, request, *args, **kwargs):
     first_name = request.POST['first_name']
     last_name = request.POST['last_name']
