@@ -9,5 +9,7 @@ urlpatterns = [
 	path("login", LoginView.as_view(), name="login"),
 	path("register", RegisterView.as_view(), name="register"),
   path("display", DisplayQRView.as_view(), name="display"),
+  path("dashboard", DashboardView.as_view(), name="display"),
   path("atten", AttenView.as_view(), name="atten"),
+  path("att_detail", AttenView2.as_view(), name="att_detail"),
 ]

@@ -1,86 +1,7 @@
-<!DOCTYPE html>
-<!-- saved from url=(0048)http://127.0.0.1:8000/student/CS3A03/attendance/ -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+{% extends 'attendance/base.html' %}
+    {% load static %}
 
-    
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title></title>
-      
-
-    <!-- Bootstrap core CSS-->
-    <link href="./student attendance_files/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom fonts for this template-->
-    <link href="./student attendance_files/all.min.css" rel="stylesheet" type="text/css">
-
-    <!-- Page level plugin CSS-->
-    <link href="./student attendance_files/dataTables.bootstrap4.css" rel="stylesheet">
-
-    <!-- Custom styles for this template-->
-    <link href="./student attendance_files/sb-admin.css" rel="stylesheet">
-
-    <!-- Latest compiled and minified CSS -->
-
-
-      
-      
-
-  </head>
-
-  <body id="page-top">
-
-    <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-
-      <a class="navbar-brand mr-1" href="http://127.0.0.1:8000/info/">College Management System</a>
-
-      <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
-        <i class="fas fa-bars"></i>
-      </button>
-
-      <!-- Navbar -->
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="http://127.0.0.1:8000/student/CS3A03/attendance/#" data-toggle="modal" data-target="#logoutModal">Logout</a>
-            </li>
-          </ul>
-        </div>
-
-    </nav>
-
-    <div id="wrapper">
-
-      <!-- Sidebar -->
-      <ul class="sidebar navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="http://127.0.0.1:8000/info/">
-                <span>Home</span>
-              </a>
-            </li>
-        
-      </ul>
-
-      <div id="content-wrapper">
-
-        <div class="container-fluid">
-
-          <!-- Breadcrumbs-->
-
-
-
-
-
-
-
-          <!-- Page Content -->
-            
+    {% block content %}
                   <div class="card mb-3">
             <div class="card-header">
               <i class="fas fa-table"></i>
@@ -99,84 +20,40 @@
                     </tr>
                   </thead>
                   <tbody>
-                    
+                    {% for a in att_list %}
                     <tr>
-                        <td>MA310</td>
-                        <td><a href="http://127.0.0.1:8000/info/student/CS3A03/MA310/attendance/">Fourier Series</a></td>
-                        <td>0</td>
-                        <td>0</td>
-                        
-                            <td class="p-3 mb-2 bg-danger text-white">0</td>
-                        
-                        <td>0</td>
+                        <td>{{ a.course_id }}</td>
+                        <td><a href="{% url 'attendance_detail' a.student.USN a.course.id %}">{{a.course.name}}</a></td>
+                        <td>{{ a.att_class }}</td>
+                        <td>{{ a.total_class }}</td>
+                        {% if a.attendance < 75 %}
+                            <td class="p-3 mb-2 bg-danger text-white">{{ a.attendance }}</td>
+                        {% else %}
+                            <td class="p-3 mb-2 bg-success text-white">{{ a.attendance }}</td>
+                        {% endif %}
+                        <td>{{ a.classes_to_attend }}</td>
                     </tr>
-                    
-                    <tr>
-                        <td>CS310</td>
-                        <td><a href="http://127.0.0.1:8000/info/student/CS3A03/CS310/attendance/">Digital System Design</a></td>
-                        <td>0</td>
-                        <td>0</td>
-                        
-                            <td class="p-3 mb-2 bg-danger text-white">0</td>
-                        
-                        <td>0</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>CS320</td>
-                        <td><a href="http://127.0.0.1:8000/info/student/CS3A03/CS320/attendance/">Discrete Math</a></td>
-                        <td>0</td>
-                        <td>0</td>
-                        
-                            <td class="p-3 mb-2 bg-danger text-white">0</td>
-                        
-                        <td>0</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>CS330</td>
-                        <td><a href="http://127.0.0.1:8000/info/student/CS3A03/CS330/attendance/">Computer Organisation</a></td>
-                        <td>0</td>
-                        <td>0</td>
-                        
-                            <td class="p-3 mb-2 bg-danger text-white">0</td>
-                        
-                        <td>0</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>CS340</td>
-                        <td><a href="http://127.0.0.1:8000/info/student/CS3A03/CS340/attendance/">Data Structures</a></td>
-                        <td>0</td>
-                        <td>0</td>
-                        
-                            <td class="p-3 mb-2 bg-danger text-white">0</td>
-                        
-                        <td>0</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>CS350</td>
-                        <td><a href="http://127.0.0.1:8000/info/student/CS3A03/CS350/attendance/">Object Oriented programming</a></td>
-                        <td>0</td>
-                        <td>0</td>
-                        
-                            <td class="p-3 mb-2 bg-danger text-white">0</td>
-                        
-                        <td>0</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>HU320</td>
-                        <td><a href="http://127.0.0.1:8000/info/student/CS3A03/HU320/attendance/">Environmental Science</a></td>
-                        <td>0</td>
-                        <td>0</td>
-                        
-                            <td class="p-3 mb-2 bg-danger text-white">0</td>
-                        
-                        <td>0</td>
-                    </tr>
-                    
+                    {% empty %}
+                <select name="year" class="form-control mb-3">
+                <option selected>Semister</option>
+                <option value="1">First</option>
+                <option value="2">Second</option>
+                <option value="3">Third</option>
+                <option value="4">Fourth</option>
+                <option value="5">Fourth</option>
+                <option value="6">Fourth</option>
+                <option value="7">Fourth</option>
+                <option value="8">Fourth</option>
+              </select>
+              <select name="branch" class="form-control  mb-3">
+                <option selected>Subject</option>
+                <option value="CE">DSA</option>
+                <option value="ME">OS</option>
+                <option value="CSE">DBMS</option>
+                <option value="AIML">C++</option>
+                <option value="ETC">Python</option>
+              </select>
+                    {% endfor %}
 
                   </tbody>
                 </table>
@@ -185,64 +62,5 @@
           </div>
 
 
-    
+    {% endblock %}
 
-        </div>
-        <!-- /.container-fluid -->
-
-        <!-- Sticky Footer -->
-
-
-
-
-
-
-
-
-      </div>
-      <!-- /.content-wrapper -->
-
-    </div>
-    <!-- /#wrapper -->
-
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="http://127.0.0.1:8000/student/CS3A03/attendance/#page-top">
-      <i class="fas fa-angle-up"></i>
-    </a>
-
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-          <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="http://127.0.0.1:8000/accounts/logout">Logout</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <!-- Bootstrap core JavaScript-->
-    <script src="./student attendance_files/jquery.min.js"></script>
-    <script src="./student attendance_files/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="./student attendance_files/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="./student attendance_files/sb-admin.min.js"></script>
-
-   
-    
-  
-
-
-</body></html>

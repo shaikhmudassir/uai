@@ -10,12 +10,13 @@ import pyqrcode, io
 class HomeView(View):
 
   def get(self, request):
-    html = '''<a href="create"><button>Create</button></a>
+    html = '''
             <a href="scan"><button>Scan</button></a>
             <a href="login"><button>login</button></a>
             <a href="register"><button>register</button></a>
-            <a href="display"><button>Display</button></a>
-            <a href="atten"><button>atten</button></a
+            <a href="display"><button>Display QR</button></a>
+            <a href="dashboard"><button>Dashboard</button></a>
+            <a href="atten"><button>Attendance</button></a>
             '''
     return HttpResponse(html)
 
@@ -36,6 +37,14 @@ class DisplayQRView(View):
 
     return render(request, 'attendance/display_qr.html', {})
 
+class DashboardView(View):
+  
+  def get(self, request):
+    # if 'user_id' in request.session:
+    #     return HttpResponseRedirect('')
+
+    return render(request, 'attendance/dashboard.html', {})
+
 class AttenView(View):
   
   def get(self, request):
@@ -43,6 +52,15 @@ class AttenView(View):
     #     return HttpResponseRedirect('')
 
     return render(request, 'attendance/attendance.html', {})
+
+class AttenView2(View):
+  
+  def get(self, request):
+    # if 'user_id' in request.session:
+    #     return HttpResponseRedirect('')
+
+    return render(request, 'attendance/att_detail.html', {})
+
 class ScanView(TemplateView):
 
   def post(self, request, *args, **kwargs):

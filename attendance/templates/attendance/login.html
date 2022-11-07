@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<!-- saved from url=(0037)http://127.0.0.1:8000/accounts/login/ -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="en">
 
-    
+  <head>
+
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -10,16 +11,16 @@
 
     <title>Login</title>
 
-      
+      {% load static %}
 
     <!-- Bootstrap core CSS-->
-    <link href="./Login_files/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static '/attendance/bootstrap/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 
     <!-- Custom fonts for this template-->
-    <link href="./Login_files/all.min.css" rel="stylesheet" type="text/css">
+    <link href="{% static '/attendance/bootstrap/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
 
     <!-- Custom styles for this template-->
-    <link href="./Login_files/sb-admin.css" rel="stylesheet">
+    <link href="{% static '/attendance/bootstrap/css/sb-admin.css' %}" rel="stylesheet">
 
   </head>
 
@@ -30,10 +31,10 @@
         <div class="card-header">Login</div>
         <div class="card-body">
             <form method="post">
-              <input type="hidden" name="csrfmiddlewaretoken" value="kopkzl591XTJ76VsHniaiXvUmfNReTZOh8LIvfl8pJTUy9kTvt2iWQdeByuzK7r8">
-              <p><label for="id_username">Username:</label> <input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" required="" id="id_username"></p>
-<p><label for="id_password">Password:</label> <input type="password" name="password" autocomplete="current-password" required="" id="id_password"></p>
-              <button class="btn btn-success" type="submit">Login</button>
+              {% csrf_token %}
+              <p><input type="text" name="Username" class="form-control" placeholder="Username"></p>
+              <p><input type="text" name="password" class="form-control" placeholder="Password"></p>
+              <button  class="btn btn-success" type="submit">Login</button>
             </form>
 
         </div>
@@ -41,13 +42,12 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="./Login_files/jquery.min.js"></script>
-    <script src="./Login_files/bootstrap.bundle.min.js"></script>
+    <script src="{% static '/attendance/bootstrap/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static '/attendance/bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="./Login_files/jquery.easing.min.js"></script>
+    <script src="{% static '/attendance/bootstrap/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
 
-  
+  </body>
 
-
-</body></html>
+</html>
